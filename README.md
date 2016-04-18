@@ -12,8 +12,10 @@
 * groovy-templates
 * web
 
+※ [FYI](https://github.com/ogasawaraShinnosuke/spring-boot-initial-jpa-mysql-groovy-starter/blob/master/build.gradle)
+
 # started
-To run `main/resources/static/import.sql` to mysql-console.
+To run [import.sql](https://github.com/ogasawaraShinnosuke/spring-boot-initial-jpa-mysql-groovy-starter/blob/master/src/main/resources/static/import.sql). to mysql-console.
 
 ``` sh
 cd sprint-initial-jpa-mysql-groovy-starter
@@ -21,6 +23,6 @@ gradle build
 java -jar build/libs/substrate-0.0.1-SNAPSHOT.jar
 ```
 
-After jar-file is started, run `main/resources/static/insert.sql`.
+After jar-file is started, run [insert.sql](https://github.com/ogasawaraShinnosuke/spring-boot-initial-jpa-mysql-groovy-starter/blob/master/src/main/resources/static/insert.sql).
 
 `curl localhost:8080/users/1`
