@@ -1,11 +1,10 @@
 package com.example.domain
 
-import org.hibernate.annotations.NaturalId
-
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
+import javax.persistence.OneToOne
 import javax.persistence.Table
 
 @Entity
@@ -18,14 +17,14 @@ class UserTest implements Serializable {
     int id
 
     @Column(nullable = false)
-    @NaturalId
     String name
 
     @Column(nullable = false)
-    @NaturalId
     Date created
 
     @Column(nullable = false)
-    @NaturalId
     Date updated
+
+    @OneToOne(mappedBy = 'userTest')
+    UserInfo userInfo
 }

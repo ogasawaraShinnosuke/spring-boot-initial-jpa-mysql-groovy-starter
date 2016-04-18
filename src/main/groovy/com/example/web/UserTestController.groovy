@@ -31,6 +31,12 @@ class UserTestController {
                 name ut?.name
                 created ut?.created
                 updated ut?.updated
+                info {
+                    rowId ut?.userInfo?.id
+                    sex ut?.userInfo?.sex
+                    email ut?.userInfo?.email
+                    password ut?.userInfo?.password
+                }
             }
         }
         json?.toString()

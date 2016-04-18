@@ -13,5 +13,8 @@ class UserTestControllerTest extends SpecBase {
         def json = new JsonSlurper().parseText(body)
         json.user.rowId == 1
         json.user.name == 'ken'
+        json.user.info.sex == 'MAN'
+        json.user.info.email == 'example+0001@example.com'
+        json.user.info.password == null
     }
 }
