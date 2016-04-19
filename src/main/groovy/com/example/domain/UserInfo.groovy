@@ -1,10 +1,7 @@
 package com.example.domain
 
-import javax.persistence.CascadeType
 import javax.persistence.Column
 import javax.persistence.Entity
-import javax.persistence.EnumType
-import javax.persistence.Enumerated
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.persistence.JoinColumn
@@ -16,10 +13,6 @@ import javax.persistence.Table
 class UserInfo implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    enum SEX {
-        MAN, WOMAN
-    }
-
     @Id
     @GeneratedValue
     int id
@@ -28,8 +21,21 @@ class UserInfo implements Serializable {
     int userId
 
     @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    SEX sex
+    int sex
+
+    enum Sex implements EnumBase<Integer> {
+        MAN(1), WOMAN(2)
+        int value
+
+        Sex(value) {
+            this.value = value
+        }
+
+        @Override
+        Integer get() {
+            this.value
+        }
+    }
 
     @Column(nullable = true)
     String email
@@ -37,7 +43,7 @@ class UserInfo implements Serializable {
     @Column(nullable = true)
     String password
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = 'id', referencedColumnName = 'user_id')
     UserTest userTest
 }
