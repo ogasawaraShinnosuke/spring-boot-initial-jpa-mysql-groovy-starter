@@ -1,4 +1,4 @@
-# sprint-initial-jpa-mysql-groovy-starter
+# spring-boot-initial-jpa-mysql-groovy-starter
 
 # environment
 * Java 1.8.0_77
@@ -8,11 +8,11 @@
 * MySQL 5.7.12
 
 # spring starter dependencies
+[FYI](https://github.com/ogasawaraShinnosuke/spring-boot-initial-jpa-mysql-groovy-starter/blob/master/build.gradle)
+
 * data-jpa
 * groovy-templates
 * web
-
-※ [FYI](https://github.com/ogasawaraShinnosuke/spring-boot-initial-jpa-mysql-groovy-starter/blob/master/build.gradle)
 
 # started
 To run [import.sql](https://github.com/ogasawaraShinnosuke/spring-boot-initial-jpa-mysql-groovy-starter/blob/master/src/main/resources/static/import.sql). to mysql-console.
