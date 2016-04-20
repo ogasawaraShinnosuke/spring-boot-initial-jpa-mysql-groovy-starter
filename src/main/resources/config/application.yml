@@ -3,5 +3,6 @@ spring:
     url: jdbc:mysql://localhost/test001
     username: root
     password: password
-    driverClassName: com.mysql.jdbc.Driver
+#    driverClassName: com.mysql.jdbc.Driver
+    driverClassName: org.mariadb.jdbc.Driver
   jpa.hibernate.ddl-auto: update

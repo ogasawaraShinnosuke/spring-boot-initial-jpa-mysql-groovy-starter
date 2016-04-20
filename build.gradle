@@ -33,6 +33,7 @@ dependencies {
     compile 'org.codehaus.groovy:groovy-json'
     compile('org.codehaus.groovy:groovy')
     runtime('mysql:mysql-connector-java')
+    runtime('org.mariadb.jdbc:mariadb-java-client')
     testCompile 'org.spockframework:spock-core'
     testCompile 'org.spockframework:spock-spring'
     testCompile('org.springframework.boot:spring-boot-starter-test')
