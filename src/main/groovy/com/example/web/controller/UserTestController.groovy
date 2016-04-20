@@ -1,6 +1,6 @@
-package com.example.web
+package com.example.web.controller
 
-import com.example.domain.UserTest
+import com.example.domain.entity.UserTest
 import com.example.service.UserTestService
 import groovy.json.JsonBuilder
 import org.springframework.beans.factory.annotation.Autowired
@@ -36,6 +36,12 @@ class UserTestController {
                     sex ut?.userInfo?.sex
                     email ut?.userInfo?.email
                     password ut?.userInfo?.password
+                }
+                history {
+                    rowId ut?.userHistory?.id
+                    billingFlg ut?.userHistory?.billingFlg
+                    userAgent ut?.userHistory?.userAgent
+                    loginFailCount ut?.userHistory?.loginFailCount
                 }
             }
         }

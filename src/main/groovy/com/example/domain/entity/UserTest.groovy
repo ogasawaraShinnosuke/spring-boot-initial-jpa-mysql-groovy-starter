@@ -1,14 +1,12 @@
-package com.example.domain
+package com.example.domain.entity
 
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.persistence.OneToOne
-import javax.persistence.Table
 
 @Entity
-@Table
 class UserTest implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -27,4 +25,7 @@ class UserTest implements Serializable {
 
     @OneToOne(mappedBy = 'userTest')
     UserInfo userInfo
+
+    @OneToOne(mappedBy = 'userTest')
+    UserHistory userHistory
 }
