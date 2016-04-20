@@ -1,4 +1,4 @@
-package com.example.web
+package com.example.web.controller
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration
 import org.springframework.transaction.annotation.Transactional

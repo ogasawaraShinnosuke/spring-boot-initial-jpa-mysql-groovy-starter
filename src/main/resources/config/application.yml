@@ -4,4 +4,4 @@ spring:
     username: root
     password: password
     driverClassName: com.mysql.jdbc.Driver
-  jpa.hibernate.ddl-auto: create
+  jpa.hibernate.ddl-auto: update

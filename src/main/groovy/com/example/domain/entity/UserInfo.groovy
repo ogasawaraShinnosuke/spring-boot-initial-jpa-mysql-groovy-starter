@@ -1,4 +1,6 @@
-package com.example.domain
+package com.example.domain.entity
+
+import com.example.common.EnumBase
 
 import javax.persistence.Column
 import javax.persistence.Entity
@@ -6,10 +8,8 @@ import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.persistence.JoinColumn
 import javax.persistence.OneToOne
-import javax.persistence.Table
 
 @Entity
-@Table
 class UserInfo implements Serializable {
     private static final long serialVersionUID = 1L;
 

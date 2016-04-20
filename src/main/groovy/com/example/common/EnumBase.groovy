@@ -1,4 +1,4 @@
-package com.example.domain
+package com.example.common
 
 trait EnumBase<T> {
     T get() { null }
