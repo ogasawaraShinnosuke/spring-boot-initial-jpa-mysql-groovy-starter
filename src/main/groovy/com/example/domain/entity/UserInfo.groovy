@@ -1,6 +1,7 @@
 package com.example.domain.entity
 
 import com.example.common.EnumBase
+import groovy.transform.Canonical
 
 import javax.persistence.Column
 import javax.persistence.Entity
@@ -10,6 +11,7 @@ import javax.persistence.JoinColumn
 import javax.persistence.OneToOne
 
 @Entity
+@Canonical
 class UserInfo implements Serializable {
     private static final long serialVersionUID = 1L;
 

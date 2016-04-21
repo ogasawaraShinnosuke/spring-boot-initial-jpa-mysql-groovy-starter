@@ -25,24 +25,22 @@ class UserTestController {
     def index(@PathVariable int id) {
         UserTest ut = userTestService.getUserTestById id
         def json = new JsonBuilder()
-        json {
-            user {
-                rowId ut?.id
-                name ut?.name
-                created ut?.created
-                updated ut?.updated
-                info {
-                    rowId ut?.userInfo?.id
-                    sex ut?.userInfo?.sex
-                    email ut?.userInfo?.email
-                    password ut?.userInfo?.password
-                }
-                history {
-                    rowId ut?.userHistory?.id
-                    billingFlg ut?.userHistory?.billingFlg
-                    userAgent ut?.userHistory?.userAgent
-                    loginFailCount ut?.userHistory?.loginFailCount
-                }
+        json.user {
+            rowId ut?.id
+            name ut?.name
+            created ut?.created
+            updated ut?.updated
+            info {
+                rowId ut?.userInfo?.id
+                sex ut?.userInfo?.sex
+                email ut?.userInfo?.email
+                password ut?.userInfo?.password
+            }
+            history {
+                rowId ut?.userHistory?.id
+                billingFlg ut?.userHistory?.billingFlg
+                userAgent ut?.userHistory?.userAgent
+                loginFailCount ut?.userHistory?.loginFailCount
             }
         }
         json?.toString()

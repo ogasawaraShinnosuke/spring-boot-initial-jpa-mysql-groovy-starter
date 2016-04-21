@@ -26,6 +26,8 @@ interface UserTestService {
 
     List<UserHistory> findByBillingFlg(boolean billingFlg)
 
+    List<UserTest> findUserTestByUserId(int userId)
+
 //    List<UserInfo> getUserInfoByUserId(int id)
 
 //    List<UserTest> getUserTestByName(String name) { null }

@@ -3,6 +3,8 @@ package com.example.web
 import com.example.domain.entity.UserHistory
 import com.example.domain.entity.UserInfo
 import com.example.service.UserTestService
+import groovy.json.JsonBuilder
+import groovy.json.JsonOutput
 import groovy.json.JsonSlurper
 import org.springframework.beans.factory.annotation.Autowired
 import spock.lang.Unroll
@@ -54,103 +56,109 @@ class UserTestControllerTest extends SpecBase {
         json.user.info.email == 'example+0001@example.com'
         json.user.info.password == null
 
-//        List<UserInfo> users = userTestService.getUserInfoByUserId(1)
-//        users.each { user ->
-//            println ' user - info '
-//            if (user instanceof UserInfo) {
-//                println user.id
-//                println user.userId
-//                println user.email
-//                println user.sex
+        String.metaClass.toPretty << { ->
+            JsonOutput.prettyPrint(delegate.toString())
+        }
+        def jb = new JsonBuilder()
+        jb.user userTestService.findByUserId(1), { ui ->
+            id ui.userTest.id
+            name ui.userTest.name
+            info {
+                id ui.id
+                email ui.email
+                sex ui.sex
+            }
+        }
+        println ' user - info by userId'
+        println jb.toString().toPretty()
+        println()
+
+        jb.user userTestService.findByEmail('example+0001@example.com'), { ui ->
+            id ui.userTest.id
+            name ui.userTest.name
+            info {
+                id ui.id
+                email ui.email
+                sex ui.sex
+            }
+        }
+        println ' user - info by email'
+        println jb.toString().toPretty()
+        println()
+
+        jb.user userTestService.findByUserIdAndEmail(1, 'example+0001@example.com'), { ui ->
+            id ui.userTest.id
+            name ui.userTest.name
+            info {
+                id ui.id
+                email ui.email
+                sex ui.sex
+            }
+        }
+        println ' user - info by userId and email'
+        println jb.toString().toPretty()
+        println()
+
+        jb.user userTestService.findByUserIdAndSexAndEmail(1, 1, 'example+0001@example.com'), { ui ->
+            id ui.userTest.id
+            name ui.userTest.name
+            info {
+                id ui.id
+                email ui.email
+                sex ui.sex
+            }
+        }
+        println ' user - info by userId and sex and email'
+        println jb.toString().toPretty()
+        println()
+
+        jb.user userTestService.findHistoryById(1), { ui ->
+            id ui.userTest.id
+            name ui.userTest.name
+            history {
+                id ui.id
+                billingFlg ui.billingFlg
+                loginFailCount ui.loginFailCount
+                userAgent ui.userAgent
+            }
+        }
+        println ' user - history by id'
+        println jb.toString().toPretty()
+        println()
+
+        jb.user userTestService.findHistoryByUserId(2), { ui ->
+            id ui.userTest.id
+            name ui.userTest.name
+            history {
+                id ui.id
+                billingFlg ui.billingFlg
+                loginFailCount ui.loginFailCount
+                userAgent ui.userAgent
+            }
+        }
+        println ' user - history by userId'
+        println jb.toString().toPretty()
+        println()
+
+        def uts = userTestService.findUserTestByUserId(2)
+        println uts
+//        jp.user uts, { u ->
+//            id ui.userTest.id
+//            name ui.userTest.name
+//            info {
+//                id ui.id
+//                email ui.email
+//                sex ui.sex
 //            }
-//            println ' not user info '
-//            println user
+//            history {
+//                id ui.id
+//                billingFlg ui.billingFlg
+//                loginFailCount ui.loginFailCount
+//                userAgent ui.userAgent
+//            }
 //        }
-
-        userTestService.findByUserId(1).each { user ->
-            println ' user - info by userId'
-            if (user instanceof UserInfo) {
-                println "id=$user.id"
-                println "userId=$user.userId"
-                println "email=$user.email"
-                println "sex=$user.sex"
-            } else {
-                println ' not user info '
-                println user
-            }
-            println()
-        }
-
-        userTestService.findByEmail('example+0001@example.com').each { user ->
-            println ' user - info by email'
-            if (user instanceof UserInfo) {
-                println "id=$user.id"
-                println "userId=$user.userId"
-                println "email=$user.email"
-                println "sex=$user.sex"
-            } else {
-                println ' not user info '
-                println user
-            }
-            println()
-        }
-
-        userTestService.findByUserIdAndEmail(1, 'example+0001@example.com').each { user ->
-            println ' user - info by userId and email'
-            if (user instanceof UserInfo) {
-                println "id=$user.id"
-                println "userId=$user.userId"
-                println "email=$user.email"
-                println "sex=$user.sex"
-            } else {
-                println ' not user info '
-                println user
-            }
-            println()
-        }
-
-        userTestService.findByUserIdAndSexAndEmail(1, 1, 'example+0001@example.com').each { user ->
-            println ' user - info by userId and sex and email'
-            if (user instanceof UserInfo) {
-                println "id=$user.id"
-                println "userId=$user.userId"
-                println "email=$user.email"
-                println "sex=$user.sex"
-            } else {
-                println ' not user info '
-                println user
-            }
-            println()
-        }
-
-        userTestService.findHistoryById(1).each { user ->
-            println ' user - history by id'
-            if (user instanceof UserHistory) {
-                println "id=$user.id"
-                println "billingFlg=$user.billingFlg"
-                println "userId=$user.userId"
-                println "loginFailCount=$user.loginFailCount"
-                println "userAgent=$user.userAgent"
-            } else {
-                println ' not user history '
-                println user
-            }
-            println()
-        }
-
-        userTestService.findHistoryByUserId(2).each { user ->
-            println ' user - history by userId'
-            if (user instanceof UserHistory) {
-                println "id=$user.id"
-                println "billingFlg=$user.billingFlg"
-                println "userId=$user.userId"
-                println "loginFailCount=$user.loginFailCount"
-                println "userAgent=$user.userAgent"
-            } else {
-                println ' not user history '
-                println user
-            }
-            println()
-        }
+//        println ' user -  by userId'
+//        println jb.toString().toPretty()
+        println()
     }
 }

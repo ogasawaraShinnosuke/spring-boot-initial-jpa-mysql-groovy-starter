@@ -73,6 +73,11 @@ class UserTestImpl implements UserTestService {
     List<UserHistory> findByBillingFlg(boolean billingFlg) {
         userHistoryRepository.findByBillingFlg(billingFlg)
     }
+
+    @Override
+    List<UserTest> findUserTestByUserId(int userId) {
+        userInfoRepository.findUserTestByUserId(userId)
+    }
 //    @Override
 //    List<UserInfo> getUserInfoByUserId(int id) {
 //        userInfoRepository.findByUserId id
